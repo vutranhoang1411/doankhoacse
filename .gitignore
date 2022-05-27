@@ -1,0 +1,7 @@
+node_modules
+test.js
+credentials.json
+data.csv
+helper2.js
+*.json
+.env

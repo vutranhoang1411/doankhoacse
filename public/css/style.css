@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    background-image: url(../background-01.png);
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.container1 {
+    margin: 0;
+}
+
+.first {
+}
+
+#logo {
+    width: auto;
+    display: block;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.first-row-chart{
+    margin-top: 40px;
+}
+
+.second-row-chart {
+    margin-top: 40px;
+}
+
+#chart4 {
+    margin-left: 180px;
+}

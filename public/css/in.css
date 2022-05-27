@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-image: url(../img/CongboLogoBG.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+canvas {
+    position:absolute;
+}
+
+.container {
+    width: 80%;
+    height: 100%;
+    
+    /* margin: 0 180px; */
+}
+
+.first {
+    padding-top: 10px;
+}
+
+#logo {
+    width: 60%;
+    display: block;
+    /* padding-top: 20px;   */
+    margin: 0px auto;
+}
+
+.second {
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+}
+
+ #video   {
+    position: relative;
+    margin-top: 20px;
+    border: 10px #097652 solid;
+    border-radius: 30px;
+} 
+
+.container-checkin {
+    width: 330px;
+    height: 230px;
+    background-color: #FFB524;
+    border-radius: 16px;
+    /* margin-right: 140px; */
+}
+
+.container-checkin .title {
+    height: 60px;
+    background-color: #FC7A57;
+    border-radius: 16px 16px 0 0;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    font-size: 32px;
+    line-height: 60px;
+    font-weight: 900;
+    color: #00432D;
+}
+
+
+.info {
+    padding: 15px 30px;
+    font-size: 1.3rem;
+}
+
+.info .label {
+    font-weight: bold;
+    color: white;
+}
+
+.info #name,#classID {
+    font-weight: bold;
+    color:#00432D;
+}
+
+.info #name {
+    margin-bottom: 10px;
+}
+
+.name,.chi-doan,.status {
+    font-weight: 700;
+    color: #00432D;
+}
+
+
+.info-item {
+    font-weight: bold;
+    margin-top: 150px;
+    margin-left: 50px;
+    color: #00432D;
+}
+
+#num {
+    width: 250px;
+    text-align: center;
+    font-size: 100px;
+}
