@@ -3,6 +3,7 @@ test.js
 credentials.json
 data.csv
 helper2.js
-*.json
+testing.json
+token.json
 .env
 testing_img

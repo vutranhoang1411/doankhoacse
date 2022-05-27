@@ -4,6 +4,40 @@ const path = require('path');
 const socketio = require('../socket/socketio');
 let imgData = require('../testing.json');
 const faceapi = require('@vladmandic/face-api');
+const confirmCheckin = async(req,res,next)=>{
+    try{
+        const {ID}=req.body;
+        await knex('attendances').where({
+            ID:ID,
+        }).update({
+            check_in:'1',
+        })
+        res.json({
+            msg:'success'
+        })
+    }catch(error){
+        console.log(error);
+        next(error);
+    }
+}
+const confirmCheckout= async(req,res,next)=>{
+    try{
+        const {ID}=req.body;
+        await knex('attendances').where({
+            ID:ID,
+            check_in:'1'
+        }).update({
+            check_out:'1',
+        })
+        res.json({
+            msg:'success'
+        })
+    }catch(error){
+        console.log(error);
+        next(error);
+    }
+}
+
 const userCheckin = async(req,res,next)=>{
     try{
         
@@ -35,7 +69,8 @@ const userCheckin = async(req,res,next)=>{
     
         if (bestMatch.label==='unknown'){
             res.json({
-                msg:`cant identify, distance:${bestMatch.distance}`
+                identify:false,
+                msg:`cant identify user`
             })
         }
         else{
@@ -46,7 +81,7 @@ const userCheckin = async(req,res,next)=>{
 
             //server responsex
             res.json({
-                msg:bestMatch.label,
+                identify:true
             });
         } 
     }catch(error){
@@ -72,4 +107,4 @@ const render_out = async(req,res,next)=>{
 const render_test = async(req,res,next)=>{
     res.render('test');
 }
-module.exports={userCheckin,emit_testing,render_in,render_out,render_test}
+module.exports={userCheckin,emit_testing,render_in,render_out,render_test,confirmCheckin,confirmCheckout}
