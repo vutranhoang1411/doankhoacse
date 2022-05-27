@@ -86,7 +86,7 @@ const userCheckin = async(req,res,next)=>{
                 identify:true,
                 className:"mt20kh10",
                 ID:2013245,
-                name:"vutranhoang"
+                name:bestMatch.label
             });
         } 
     }catch(error){
