@@ -7,11 +7,12 @@ const faceapi = require('@vladmandic/face-api');
 const confirmCheckin = async(req,res,next)=>{
     try{
         const {ID}=req.body;
-        await knex('attendances').where({
-            ID:ID,
-        }).update({
-            check_in:'1',
-        })
+        // await knex('attendances').where({
+        //     ID:ID,
+        // }).update({
+        //     check_in:'1',
+        // })
+        console.log(ID);
         res.json({
             msg:'success'
         })
@@ -23,12 +24,13 @@ const confirmCheckin = async(req,res,next)=>{
 const confirmCheckout= async(req,res,next)=>{
     try{
         const {ID}=req.body;
-        await knex('attendances').where({
-            ID:ID,
-            check_in:'1'
-        }).update({
-            check_out:'1',
-        })
+        // await knex('attendances').where({
+        //     ID:ID,
+        //     check_in:'1'
+        // }).update({
+        //     check_out:'1',
+        // })
+        console.log(ID);
         res.json({
             msg:'success'
         })
@@ -81,7 +83,10 @@ const userCheckin = async(req,res,next)=>{
 
             //server responsex
             res.json({
-                identify:true
+                identify:true,
+                className:"mt20kh10",
+                ID:2013245,
+                name:"vutranhoang"
             });
         } 
     }catch(error){
