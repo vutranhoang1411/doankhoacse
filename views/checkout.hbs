@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/css/in.css">
+<script src="/socket.io/socket.io.js"></script>
+
+<div class="container">
+    <div class="first">
+        <img  id="logo" src="/img/logoDH-01.png" alt="">
+    </div>
+    <div class="second" id="frame">
+        <div id='container-status' class="col-md-5"></div>
+        <div class="checkin">
+            <div class="container-checkin">
+                <div class="title">Check-out</div>
+                <div class="info">
+                  <div class="label">Tên đại biểu: </div>
+                  <div id="name"></div>
+                </div>
+            </div>
+
+            <div class="checkbyID">
+              <label for="MSSV" >Mã số sinh viên</label>
+              <input type="text" name="MSSV" value="" id="inputID">
+              <button id="inputBtn">Check</button>
+            </div>
+        </div> 
+        
+    </div>
+</div>
+
+<script>
+  const nameStudent = document.getElementById('name')
+  const inputID = document.getElementById('inputID')
+  const inputBtn = document.getElementById('inputBtn')
+
+
+  inputBtn.addEventListener('click', async () => {
+      let ID = inputID.value;
+      inputID.value = ""   
+      inputID.focus();
+      const {data:{msg},
+      } = await axios.post('http://localhost:3000/api/v1/confirm/checkout',{ID}); 
+  })
+
+  inputID.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      inputBtn.click();
+    }
+  });
+
+
+
+    var name;
+    var chidoan;
+    var status;
+    var array=[];
+    var count =0;
+    const main = document.getElementById('container-status');
+    console.log(main);
+    function slide({name='',chidoan='',status=''}) {
+      if (main) {
+        if (count>=3) {
+            main.removeChild(array[count-3]);
+        }
+        const slide = document.createElement('div');
+        slide.classList.add('status-item', 'row');
+        slide.innerHTML = `
+          <div class="shape col-md-2"></div>
+          <div class="info col-md-10">
+              <p class="name">${name}</p>
+              <p class="status">${status}</p>
+          </div>
+        `;
+        array[count]=slide;
+        count++;
+        main.insertBefore(slide, main.firstChild);
+      }
+    }
+
+
+    var socket = io.connect('http://localhost:3000');
+
+
+    socket.on('student_join', function (data) {
+        if(data) {
+          nameStudent.innerHTML = data.name
+          slide({
+            name: data.name,
+            status: `Đã Check-out`
+          }) ;
+        } else {
+            console.log("There is a problem:", data);
+        }
+    });
+
+</script>
+

@@ -2,27 +2,74 @@
 <link rel="stylesheet" href="/css/style.css">
 <div class="container-fluid">
     <div class="first row">
-        <img  id="logo" src="/img/logo-01.png" alt="">
+        <img  id="logo" src="/img/logoDH-01.png" alt="">
     </div>
         <div class="first-row-chart row">
-            <div class="chart-item col-md-4">
-                <canvas id="chart1" style="width:100%;max-width:550px;"></canvas>
+            <div id='container-status' class="col-md-5">
             </div>
-            <div class="chart-item col-md-4">
-                <canvas id="chart2" style="width:100%;max-width:550px"></canvas>                
-            </div>
-            <div class="chart-item col-md-4">
-                <canvas id="chart3" style="width:100%;max-width:550px"></canvas>                
-            </div>
-        </div>
-        <div class="second-row-chart row">
-            <div class="chart-item col-md-6">
-                <canvas id="chart4" style="width:100%;max-width:500px"></canvas>
-            </div>
-            <div class="chart-item col-md-6">
-                <canvas id="chart5" style="width:100%;max-width:500px"></canvas>                
+            <div class="numbers col-md-7">
+                <p class="text">Số đại biểu đang tham gia: </p>
+                <dir id="nums">{{count}}</dir>
             </div>
         </div>
         
 </div>
-<script src="/script/chart.js"></script>
+
+
+
+<script>
+
+var name;
+var chidoan;
+var status;
+var array=[];
+var count =0;
+const main = document.getElementById('container-status');
+console.log(main);
+function slide({name='',chidoan='',status=''}) {
+  if (main) {
+    if (count>=3) {
+        main.removeChild(array[count-3]);
+    }
+    const slide = document.createElement('div');
+    slide.classList.add('status-item', 'row');
+    slide.innerHTML = `
+      <div class="shape col-md-2"></div>
+      <div class="info col-md-10">
+          <p class="name">${name}</p>
+          <p class="status">${status}</p>
+      </div>
+    `;
+    array[count]=slide;
+    count++;
+    main.insertBefore(slide, main.firstChild);
+
+    {{!-- main.appendChild(slide); --}}
+  }
+}
+
+
+var socket = io.connect('http://localhost:3000');
+var output = document.getElementById("num");
+
+
+socket.on('student_join', function (data) {
+    if(data) {
+      var nums = document.getElementById('nums');
+      if (data.status == 'in') {
+            nums.innerHTML = Number(nums.innerHTML) +1;
+      }
+      else {
+            nums.innerHTML = Number(nums.innerHTML) - 1;
+      }
+      slide({
+        name: data.name,
+        chidoan: data.className,
+        status: `Đã Check-${data.status}`
+      }) ;
+    } else {
+        console.log("There is a problem:", data);
+    }
+});
+
+</script>

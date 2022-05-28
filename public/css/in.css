@@ -40,9 +40,9 @@ canvas {
 
 .second {
     margin: 0px auto;
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
-    
     align-items: center;
 }
 
@@ -53,13 +53,106 @@ canvas {
     border-radius: 30px;
 } 
 
+.confirm-container {
+    /* font-size: 10px; */
+    margin: 20px;
+    color: #097652;
+    display: none;
+    
+}
+
+.confirm-container button {
+    width: 100px;
+    margin-top: 16px;
+    padding: 6px ;
+    text-align: center;
+    background-color: #FFB524;
+    border: 0;
+    border-radius: 6px;
+    color: #097652;
+    box-shadow: 1px 1px #888888;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.confirm-container.active { 
+    display: block;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+.confirm-container #noBtn {
+    margin-left: 40px;
+}
+
+.confirm-container button {
+}
+
+.confirm-container i {
+    padding: 0 6px  ;
+}
+
+
+
+.checkin {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+    height: 100%;
+    align-items: center;
+}
+
+
+.checkbyID {
+    width: 260px;
+    height: 140px;
+    padding-top: 20px; 
+}
+
+.checkbyID label {
+    display: block;
+    color: #097652;
+    font-weight: bold;
+
+}
+
+.checkbyID input {
+    width: 100%;
+}
+
+
+#inputBtn {
+    width: 80px;
+    margin-top: 16px;
+    padding: 6px ;
+    text-align: center;
+    background-color: #FFB524;
+    border: 0;
+    border-radius: 6px;
+    color: #097652;
+    box-shadow: 1px 1px #888888;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#inputBtn:hover,
+#noBtn:hover,
+#yesBtn:hover {
+    background-color: #ffdd98;
+    color: #000;
+}
+
 .container-checkin {
-    width: 330px;
-    height: 230px;
+    width: 260px;
     background-color: #FFB524;
     border-radius: 16px;
     /* margin-right: 140px; */
 }
+
 
 .container-checkin .title {
     height: 60px;
@@ -71,21 +164,21 @@ canvas {
     line-height: 60px;
     font-weight: 900;
     color: #00432D;
+    text-transform: uppercase;
 }
+
 
 
 .info {
     padding: 15px 30px;
-    font-size: 1.3rem;
+    
 }
 
 .info .label {
-    font-weight: bold;
     color: white;
 }
 
 .info #name,#classID {
-    font-weight: bold;
     color:#00432D;
 }
 
@@ -110,4 +203,110 @@ canvas {
     width: 250px;
     text-align: center;
     font-size: 100px;
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+
+*,p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.container1 {
+    margin: 0;
+}
+
+.first {
+}
+
+
+.first-row-chart{
+    margin-top: 40px;
+    padding: 50px 100px;
+}
+
+.status-item{
+    background-color: #F2EACE;
+    border-radius: 20px;
+    margin: 30px 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    animation: slideInLeft ease 0.5s;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-150%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.container-status{
+    margin-left: 100px;
+}
+
+.shape {
+    background-color: #FFB524;
+    border-radius: 20px 0 0 20px;
+}
+
+.name, .status, .chidoan {
+    color: #00432D;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 5px;
+}
+
+.chidoan {
+    font-weight: 600;
+}
+
+.status {
+    padding-bottom: 5px;
+}
+
+.numbers{
+    padding: 70px 50px;
+
+}
+
+.text {
+    font-size: 40px;
+
+}
+
+#nums {
+    font-size: 80px;
+}
+
+
+.text, #nums {
+    font-weight: 700;
+    color: #00432D;
+    text-align: center;
+    margin-left: 50px;
+}
+
+#nums {
 }
